@@ -13,7 +13,7 @@ struct AulaSwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListWithNavigationView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

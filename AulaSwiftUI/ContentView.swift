@@ -9,77 +9,119 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+        ScrollView {
+            VStack {
+                HeaderView()
+                HStack {
+                    PriceView(title: "Basic",
+                              price: "$9",
+                              textColor: .white,
+                              bgColor: .purple)
+                    
+                    PriceView(title: "Pro",
+                              price: "$19",
+                              textColor: .black,
+                              bgColor: Color.init(white: 0.9),
+                              subTitle: "Best for designer"
+                    )
                 }
-                .onDelete(perform: deleteItems)
+                
+                PriceView(title: "Team",
+                          price: "$299",
+                          textColor: .white,
+                          bgColor: Color.init(white: 0.3),
+                          subTitle: "Perfect for teams with 20 members",
+                          icon: "wand.and.rays"
+                )
+                .padding(.top, 8)
+                
+                Spacer()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+            .padding()
         }
+       
     }
+}
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+struct PriceView: View {
+    var title: String
+    var price: String
+    var textColor: Color
+    var bgColor: Color
+    var subTitle: String?
+    var icon: String?
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            VStack {
+                if let icon {
+                    Image(systemName: icon)
+                        .font(.largeTitle)
+                        .foregroundColor(textColor)
+                }
+                Text(title)
+                    .font(.system(.title, design: .rounded))
+                    .bold()
+                    .foregroundColor(textColor)
+                Text(price)
+                    .foregroundColor(textColor)
+                    .font(.system(size: 40,weight: .heavy,design: .rounded))
+                Text("per month")
+                    .font(.headline)
+                    .foregroundColor(textColor)
             }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            .frame(minWidth: 0,maxWidth: .infinity)
+            .padding(40)
+            .background(bgColor)
+            .foregroundColor(.black)
+            .cornerRadius(10)
+            
+            if let subTitle {
+                Text(subTitle)
+                    .font(.system(.caption,design: .rounded))
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(.yellow)
+                    .cornerRadius(6)
+                    .offset(y: 10)
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+struct HeaderView: View {
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Choose")
+                    .font(.system(.largeTitle,design: .rounded))
+                    .fontWeight(.bold)
+                Text("Your plan")
+            }
+            .frame(minWidth: 0,maxWidth: .infinity, alignment: .leading)
+            //.background(Color.blue)
+            
+            //Spacer()
+        }
+    }
+}
+
+struct DogView: View {
+    var body: some View {
+        VStack {
+            Image("dog")
+                .resizable()
+                .scaledToFit()
+            Image(systemName: "globe")
+                .font(.system(size: 90))
+                .foregroundColor(.indigo)
+            
+            Text("Olá **mundo* Clique [aqui](https://google.com)")
+                .padding(20)
+        }
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

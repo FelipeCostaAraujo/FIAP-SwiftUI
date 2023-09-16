@@ -13,6 +13,8 @@
 		7C38EEF22AB5DE06000B21EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C38EEF12AB5DE06000B21EB /* Preview Assets.xcassets */; };
 		7C38EEF42AB5DE06000B21EB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38EEF32AB5DE06000B21EB /* Persistence.swift */; };
 		7C38EEF72AB5DE06000B21EB /* AulaSwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C38EEF52AB5DE06000B21EB /* AulaSwiftUI.xcdatamodeld */; };
+		7C38EF002AB5EF3A000B21EB /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38EEFF2AB5EF3A000B21EB /* AnimationView.swift */; };
+		7C38EF022AB5F9EE000B21EB /* ListWithNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38EF012AB5F9EE000B21EB /* ListWithNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		7C38EEF12AB5DE06000B21EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7C38EEF32AB5DE06000B21EB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		7C38EEF62AB5DE06000B21EB /* AulaSwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AulaSwiftUI.xcdatamodel; sourceTree = "<group>"; };
+		7C38EEFF2AB5EF3A000B21EB /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		7C38EF012AB5F9EE000B21EB /* ListWithNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				7C38EEF32AB5DE06000B21EB /* Persistence.swift */,
 				7C38EEF52AB5DE06000B21EB /* AulaSwiftUI.xcdatamodeld */,
 				7C38EEF02AB5DE06000B21EB /* Preview Content */,
+				7C38EEFF2AB5EF3A000B21EB /* AnimationView.swift */,
+				7C38EF012AB5F9EE000B21EB /* ListWithNavigationView.swift */,
 			);
 			path = AulaSwiftUI;
 			sourceTree = "<group>";
@@ -144,8 +150,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C38EEF42AB5DE06000B21EB /* Persistence.swift in Sources */,
+				7C38EF002AB5EF3A000B21EB /* AnimationView.swift in Sources */,
 				7C38EEED2AB5DE04000B21EB /* ContentView.swift in Sources */,
 				7C38EEF72AB5DE06000B21EB /* AulaSwiftUI.xcdatamodeld in Sources */,
+				7C38EF022AB5F9EE000B21EB /* ListWithNavigationView.swift in Sources */,
 				7C38EEEB2AB5DE04000B21EB /* AulaSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
